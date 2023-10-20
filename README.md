@@ -14,7 +14,6 @@ Cash Flow - App para control de gastos, en la cual podremos añadir ingresos y e
 Proyecto en progreso.
 
 ## ⚙️ Comandos necesarios para la creación de la app React
-
 ``` console
 https://nodejs.org
 ```
