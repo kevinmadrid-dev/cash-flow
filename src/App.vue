@@ -3,7 +3,7 @@
 </template>
 
 <script setup>
-import HomeScreen from "@/components/SplashScreen.vue"
+import HomeScreen from "@/components/HomeScreen.vue"
 </script>
 
 <style></style>
