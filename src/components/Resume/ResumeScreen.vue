@@ -1,7 +1,15 @@
 <template>
   <main>
     <p>{{ viewLabel }}</p>
-    <h2>{{ viewAmount }}</h2>
+    <h2>{{ valueAmount }}</h2>
+
+    <div class="graphic">
+      <slot name="graphic"></slot>
+    </div>
+
+    <div class="action">
+      <slot name="action"></slot>
+    </div>
   </main>
 </template>
 
@@ -25,12 +33,25 @@ const props = defineProps({
   }
 })
 
+//Función para convertir el valor a formato moneda
+const currencyFormatter = new Intl.NumberFormat("es-PE", {
+  style: "currency",
+  currency: "PEN"
+})
+
+//Función para mostrar el valor dinero
 const viewAmount = computed(() => {
   return props.amount !== null ? props.amount : props.totalAmount
 })
 
+//Función para mostrar el label
 const viewLabel = computed(() => {
   return props.label !== null ? props.label : props.totalLabel
+})
+
+//Función para retornar el valor dinero en formato moneda
+const valueAmount = computed(() => {
+  return currencyFormatter.format(viewAmount.value)
 })
 </script>
 
