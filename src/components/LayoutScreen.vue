@@ -2,9 +2,26 @@
   <div class="header">
     <slot name="header"></slot>
   </div>
+
+  <div class="resume">
+    <slot name="resume"></slot>
+  </div>
+
+  <div class="movements">
+    <div class="head" @click="showMovements()">
+      <div class="grip"></div>
+    </div>
+  </div>
 </template>
 
-<script setup></script>
+<script setup>
+import { ref } from "vue"
+let viewMode = ref(false)
+
+const showMovements = () => {
+  viewMode.value = !viewMode.value
+}
+</script>
 
 <style scoped>
 .header,
