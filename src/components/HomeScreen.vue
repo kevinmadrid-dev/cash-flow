@@ -7,9 +7,9 @@
     <template #resume>
       <ResumeScreen
         :totalLabel="'Ahorro total'"
-        :label="label"
+        :label="vLabel"
         :totalAmount="9999"
-        :amount="amount"
+        :amount="vAmount"
       >
         <template #graphic>Graphic</template>
         <template #action>Action</template>
@@ -17,7 +17,7 @@
     </template>
 
     <template #movements>
-      <MovementsScreen />
+      <MovementsScreen :movements="vMovements" />
     </template>
   </LayoutScreen>
 </template>
@@ -26,10 +26,42 @@
 import LayoutScreen from "./LayoutScreen.vue"
 import HeaderScreen from "./HeaderScreen.vue"
 import ResumeScreen from "./Resume/ResumeScreen"
-import MovementsScreen from "./MovementsScreen"
+import MovementsScreen from "./Movements/MovementsScreen"
 
-let label = null
-let amount = null
+let vLabel = null
+let vAmount = null
+let vMovements = [
+  {
+    id: 0,
+    title: "Movimiento 01",
+    description: "lorem ipsum dolor sit amet",
+    amount: 1000
+  },
+  {
+    id: 1,
+    title: "Movimiento 02",
+    description: "lorem ipsum dolor sit amet",
+    amount: 1000
+  },
+  {
+    id: 2,
+    title: "Movimiento 03",
+    description: "lorem ipsum dolor sit amet",
+    amount: 1000
+  },
+  {
+    id: 3,
+    title: "Movimiento 04",
+    description: "lorem ipsum dolor sit amet",
+    amount: 1000
+  },
+  {
+    id: 4,
+    title: "Movimiento 05",
+    description: "lorem ipsum dolor sit amet",
+    amount: 1000
+  }
+]
 </script>
 
 <style scoped></style>
