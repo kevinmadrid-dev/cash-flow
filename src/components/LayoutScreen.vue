@@ -11,6 +11,10 @@
     <div class="head" @click="showMovements()">
       <div class="grip"></div>
     </div>
+
+    <div class="body" v-show="viewMode">
+      <slot name="movements"></slot>
+    </div>
   </div>
 </template>
 
