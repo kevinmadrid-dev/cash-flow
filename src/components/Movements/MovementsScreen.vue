@@ -4,12 +4,12 @@
 
     <div class="content">
       <MovementCard
-        v-for="movement in movements"
-        :key="movement.id"
-        :id="movement.id"
-        :title="movement.title"
-        :description="movement.description"
-        :amount="movement.amount"
+        v-for="{ id, title, description, amount } in movements"
+        :key="id"
+        :id="id"
+        :title="title"
+        :description="description"
+        :amount="amount"
       />
     </div>
   </div>

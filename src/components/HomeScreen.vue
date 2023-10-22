@@ -35,7 +35,7 @@ let vMovements = [
     id: 0,
     title: "Movimiento 01",
     description: "lorem ipsum dolor sit amet",
-    amount: 1000
+    amount: -1000
   },
   {
     id: 1,
@@ -47,7 +47,7 @@ let vMovements = [
     id: 2,
     title: "Movimiento 03",
     description: "lorem ipsum dolor sit amet",
-    amount: 1000
+    amount: -1000
   },
   {
     id: 3,
@@ -58,6 +58,18 @@ let vMovements = [
   {
     id: 4,
     title: "Movimiento 05",
+    description: "lorem ipsum dolor sit amet",
+    amount: 1000
+  },
+  {
+    id: 5,
+    title: "Movimiento 06",
+    description: "lorem ipsum dolor sit amet",
+    amount: 1000
+  },
+  {
+    id: 6,
+    title: "Movimiento 07",
     description: "lorem ipsum dolor sit amet",
     amount: 1000
   }
