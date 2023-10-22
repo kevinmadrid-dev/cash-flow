@@ -2,7 +2,7 @@
   <div class="modal">
     <div class="head">
       <p>Nuevo movimiento</p>
-      <img @click="viewModal" src="../assets/close-icon.svg" alt="close" />
+      <img @click="viewModal" src="../../assets/close-icon.svg" alt="close" />
     </div>
 
     <div class="body">

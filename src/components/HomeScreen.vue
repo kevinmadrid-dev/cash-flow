@@ -26,9 +26,9 @@
 
 <script setup>
 import LayoutScreen from "./LayoutScreen.vue"
-import HeaderScreen from "./HeaderScreen.vue"
+import HeaderScreen from "./Header/HeaderScreen.vue"
 import ResumeScreen from "./Resume/ResumeScreen"
-import ActionScreen from "./ActionScreen.vue"
+import ActionScreen from "./Resume/ActionScreen.vue"
 import MovementsScreen from "./Movements/MovementsScreen"
 
 let vLabel = null
