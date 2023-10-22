@@ -12,7 +12,9 @@
         :amount="vAmount"
       >
         <template #graphic>Graphic</template>
-        <template #action>Action</template>
+        <template #action>
+          <ActionScreen />
+        </template>
       </ResumeScreen>
     </template>
 
@@ -26,6 +28,7 @@
 import LayoutScreen from "./LayoutScreen.vue"
 import HeaderScreen from "./HeaderScreen.vue"
 import ResumeScreen from "./Resume/ResumeScreen"
+import ActionScreen from "./ActionScreen.vue"
 import MovementsScreen from "./Movements/MovementsScreen"
 
 let vLabel = null
