@@ -11,7 +11,10 @@
         :totalAmount="9999"
         :amount="vAmount"
       >
-        <template #graphic>Graphic</template>
+        <template #graphic>
+          <GraphicScreen />
+        </template>
+
         <template #action>
           <ActionScreen />
         </template>
@@ -28,6 +31,7 @@
 import LayoutScreen from "./LayoutScreen.vue"
 import HeaderScreen from "./Header/HeaderScreen.vue"
 import ResumeScreen from "./Resume/ResumeScreen"
+import GraphicScreen from "./Resume/GraphicScreen"
 import ActionScreen from "./Resume/ActionScreen.vue"
 import MovementsScreen from "./Movements/MovementsScreen"
 

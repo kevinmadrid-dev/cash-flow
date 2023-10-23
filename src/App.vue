@@ -27,6 +27,7 @@ const HomeScreen = defineAsyncComponent(
 
 <style>
 * {
+  --brand-grey: #c4c4c4;
   --brand-green: #04b500;
   --brand-blue: #0689b0;
 }
