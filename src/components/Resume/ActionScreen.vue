@@ -2,7 +2,41 @@
   <button @click="showModal = !showModal">Agregar movimiento</button>
 
   <teleport to="#app">
-    <ModalCard v-show="showModal" @viewModal="showModal = false" />
+    <ModalCard v-show="showModal" @viewModal="showModal = false">
+      <form @submit.prevent="submit">
+        <div class="field">
+          <label>Título</label>
+          <input type="text" v-model="title" />
+        </div>
+
+        <div class="field">
+          <label>Monto</label>
+          <input type="number" v-model="amount" />
+        </div>
+
+        <div class="field">
+          <label>Descripción del movimiento</label>
+          <textarea v-modal="description" cols="30" rows="10"></textarea>
+        </div>
+
+        <div class="field">
+          <label>Tipo de movimiento</label>
+          <label class="radio-label">
+            <input type="radio" v-model="movementType" value="Ingreso" />
+            <span>Ingreso</span>
+          </label>
+
+          <label class="radio-label">
+            <input type="radio" v-model="movementType" value="Egreso" />
+            <span>Egreso</span>
+          </label>
+        </div>
+
+        <div class="action">
+          <button>Agregar movimiento</button>
+        </div>
+      </form>
+    </ModalCard>
   </teleport>
 </template>
 
@@ -10,7 +44,15 @@
 import { ref } from "vue"
 import ModalCard from "./ModalCard.vue"
 
-let showModal = ref(false)
+const showModal = ref(false)
+const title = ref("")
+const amount = ref(0)
+const description = ref("")
+const movementType = ref("Ingreso")
+
+const submit = () => {
+  showModal.value = !showModal.value
+}
 </script>
 
 <style scoped>
@@ -31,7 +73,7 @@ form {
 }
 
 form .action {
-  padding: 0 24px;
+  padding: 24px;
 }
 
 .field {
