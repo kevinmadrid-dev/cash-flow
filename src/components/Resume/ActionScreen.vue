@@ -16,7 +16,7 @@
 
         <div class="field">
           <label>Descripción del movimiento</label>
-          <textarea v-modal="description" cols="30" rows="10"></textarea>
+          <textarea v-model="description" cols="30" rows="10"></textarea>
         </div>
 
         <div class="field">

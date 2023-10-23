@@ -12,7 +12,7 @@
         :amount="vAmount"
       >
         <template #graphic>
-          <GraphicScreen />
+          <GraphicScreen :amounts="amounts" />
         </template>
 
         <template #action>
@@ -37,6 +37,7 @@ import MovementsScreen from "./Movements/MovementsScreen"
 
 let vLabel = null
 let vAmount = null
+let amounts = [100, 200, 500, 200, -400, -600, -300, 0, 300, 500]
 let vMovements = [
   {
     id: 0,

@@ -5,16 +5,16 @@
         stroke="var(--brand-grey)"
         stroke-width="2"
         x1="0"
-        y1="100"
+        :y1="zero"
         x2="300"
-        y2="100"
+        :y2="zero"
       />
 
       <polyline
         fill="none"
         stroke="var(--brand-blue)"
         stroke-width="2"
-        points="0,0 100,100 200,100 300,200"
+        :points="points"
       />
 
       <line
@@ -31,7 +31,42 @@
   </div>
 </template>
 
-<script setup></script>
+<script setup>
+import { defineProps, toRefs, computed } from "vue"
+
+const props = defineProps({
+  amounts: {
+    type: Array,
+    default: () => []
+  }
+})
+
+const { amounts } = toRefs(props)
+const PixelAmount = (amount) => {
+  const min = Math.min(...amounts.value)
+  const max = Math.max(...amounts.value)
+
+  const amountAbs = amount + Math.abs(min)
+  const minMax = Math.abs(max) + Math.abs(min)
+
+  return 200 - ((amountAbs * 100) / minMax) * 2
+}
+
+const zero = computed(() => {
+  return PixelAmount(0)
+})
+
+const points = computed(() => {
+  const total = amounts.value.length
+
+  return amounts.value.reduce((points, amount, i) => {
+    const x = (300 / total) * (i + 1)
+    const y = PixelAmount(amount)
+
+    return `${points} ${x},${y}`
+  }, "0, 100")
+})
+</script>
 
 <style scoped>
 svg {
