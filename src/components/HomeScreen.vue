@@ -22,13 +22,13 @@
     </template>
 
     <template #movements>
-      <MovementsScreen :movements="vMovements" />
+      <MovementsScreen :movements="vMovements" @remove="remove" />
     </template>
   </LayoutScreen>
 </template>
 
 <script setup>
-import { computed } from "vue"
+import { computed, reactive } from "vue"
 
 import LayoutScreen from "./LayoutScreen.vue"
 import HeaderScreen from "./Header/HeaderScreen.vue"
@@ -39,7 +39,7 @@ import MovementsScreen from "./Movements/MovementsScreen"
 
 let vLabel = null
 let vAmount = null
-let vMovements = [
+let vMovements = reactive([
   {
     id: 0,
     title: "Movimiento 01",
@@ -75,7 +75,7 @@ let vMovements = [
     amount: -1000,
     time: new Date("10-01-2023")
   }
-]
+])
 
 const amounts = computed(() => {
   const lastDays = vMovements
@@ -98,6 +98,12 @@ const amounts = computed(() => {
 
 const create = (movement) => {
   vMovements = [...vMovements, movement]
+}
+
+const remove = (id) => {
+  const index = vMovements.findIndex((m) => m.id === id)
+
+  vMovements.splice(index, 1)
 }
 </script>
 

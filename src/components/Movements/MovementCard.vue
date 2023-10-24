@@ -13,7 +13,7 @@
 </template>
 
 <script setup>
-import { toRefs, defineProps, computed } from "vue"
+import { toRefs, defineProps, defineEmits, computed } from "vue"
 
 const props = defineProps({
   id: {
@@ -40,8 +40,10 @@ const currencyFormatter = new Intl.NumberFormat("es-PE", {
 
 const valueAmount = computed(() => currencyFormatter.format(amount.value))
 
+const emit = defineEmits(["remove"])
+
 const remove = () => {
-  console.log("remove - id:", id.value)
+  emit("remove", id.value)
 }
 
 const color = computed(() => {

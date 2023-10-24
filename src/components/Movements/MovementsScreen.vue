@@ -10,13 +10,14 @@
         :title="title"
         :description="description"
         :amount="amount"
+        @remove="remove"
       />
     </div>
   </div>
 </template>
 
 <script setup>
-import { toRefs, defineProps } from "vue"
+import { toRefs, defineProps, defineEmits } from "vue"
 import MovementCard from "./MovementCard"
 
 const props = defineProps({
@@ -27,6 +28,12 @@ const props = defineProps({
 })
 
 const { movements } = toRefs(props)
+
+const emit = defineEmits(["remove"])
+
+const remove = (id) => {
+  emit("remove", id)
+}
 </script>
 
 <style scoped>
