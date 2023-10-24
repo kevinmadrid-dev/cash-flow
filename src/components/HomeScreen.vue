@@ -16,7 +16,7 @@
         </template>
 
         <template #action>
-          <ActionScreen />
+          <ActionScreen @create="create" />
         </template>
       </ResumeScreen>
     </template>
@@ -45,7 +45,7 @@ let vMovements = [
     title: "Movimiento 01",
     description: "lorem ipsum dolor sit amet",
     amount: 100,
-    time: new Date("10-23-2023")
+    time: new Date("10-01-2023")
   },
   {
     id: 1,
@@ -58,56 +58,21 @@ let vMovements = [
     id: 2,
     title: "Movimiento 03",
     description: "lorem ipsum dolor sit amet",
-    amount: 500,
+    amount: 50,
     time: new Date("10-01-2023")
   },
   {
     id: 3,
     title: "Movimiento 04",
     description: "lorem ipsum dolor sit amet",
-    amount: 200,
+    amount: -50,
     time: new Date("10-01-2023")
   },
   {
     id: 4,
     title: "Movimiento 05",
     description: "lorem ipsum dolor sit amet",
-    amount: -400,
-    time: new Date("10-01-2023")
-  },
-  {
-    id: 5,
-    title: "Movimiento 06",
-    description: "lorem ipsum dolor sit amet",
-    amount: -600,
-    time: new Date("10-01-2023")
-  },
-  {
-    id: 6,
-    title: "Movimiento 07",
-    description: "lorem ipsum dolor sit amet",
-    amount: -300,
-    time: new Date("10-01-2023")
-  },
-  {
-    id: 7,
-    title: "Movimiento 08",
-    description: "lorem ipsum dolor sit amet",
-    amount: 0,
-    time: new Date("10-01-2023")
-  },
-  {
-    id: 8,
-    title: "Movimiento 09",
-    description: "lorem ipsum dolor sit amet",
-    amount: 300,
-    time: new Date("10-01-2023")
-  },
-  {
-    id: 9,
-    title: "Movimiento 10",
-    description: "lorem ipsum dolor sit amet",
-    amount: 500,
+    amount: -1000,
     time: new Date("10-01-2023")
   }
 ]
@@ -130,6 +95,10 @@ const amounts = computed(() => {
     }, 0)
   })
 })
+
+const create = (movement) => {
+  vMovements = [...vMovements, movement]
+}
 </script>
 
 <style scoped></style>
