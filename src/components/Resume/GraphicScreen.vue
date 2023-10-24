@@ -33,7 +33,7 @@
 </template>
 
 <script setup>
-import { ref, defineProps, toRefs, computed } from "vue"
+import { ref, toRefs, defineProps, computed } from "vue"
 
 const props = defineProps({
   amounts: {
@@ -65,7 +65,7 @@ const points = computed(() => {
     const y = PixelAmount(amount)
 
     return `${points} ${x},${y}`
-  }, "0, 100")
+  }, `0 ${zero.value}`)
 })
 
 const showPointer = ref(false)
