@@ -8,7 +8,7 @@
       <ResumeScreen
         :totalLabel="'Ahorro total'"
         :label="vLabel"
-        :totalAmount="9999"
+        :totalAmount="totalAmount"
         :amount="vAmount"
       >
         <template #graphic>
@@ -28,7 +28,7 @@
 </template>
 
 <script setup>
-import { computed, reactive } from "vue"
+import { computed, reactive, onMounted } from "vue"
 
 import LayoutScreen from "./LayoutScreen.vue"
 import HeaderScreen from "./Header/HeaderScreen.vue"
@@ -39,71 +39,68 @@ import MovementsScreen from "./Movements/MovementsScreen"
 
 let vLabel = null
 let vAmount = null
-let vMovements = reactive([
-  {
-    id: 0,
-    title: "Movimiento 01",
-    description: "lorem ipsum dolor sit amet",
-    amount: 100,
-    time: new Date("10-01-2023")
-  },
-  {
-    id: 1,
-    title: "Movimiento 02",
-    description: "lorem ipsum dolor sit amet",
-    amount: 200,
-    time: new Date("10-01-2023")
-  },
-  {
-    id: 2,
-    title: "Movimiento 03",
-    description: "lorem ipsum dolor sit amet",
-    amount: 50,
-    time: new Date("10-01-2023")
-  },
-  {
-    id: 3,
-    title: "Movimiento 04",
-    description: "lorem ipsum dolor sit amet",
-    amount: -50,
-    time: new Date("10-01-2023")
-  },
-  {
-    id: 4,
-    title: "Movimiento 05",
-    description: "lorem ipsum dolor sit amet",
-    amount: -1000,
-    time: new Date("10-01-2023")
-  }
-])
+let vMovements = reactive([])
 
 const amounts = computed(() => {
   const lastDays = vMovements
-    .filter((m) => {
+    .filter((x) => {
       const today = new Date()
       const oldDate = today.setDate(today.getDate() - 30)
 
-      return m.time > oldDate
+      return x.time > oldDate
     })
-    .map((m) => m.amount)
+    .map((y) => y.amount)
 
-  return lastDays.map((m, i) => {
+  return lastDays.map((x, i) => {
     const lastMovements = lastDays.slice(0, i)
 
-    return lastMovements.reduce((suma, movement) => {
-      return suma + movement
-    }, 0)
+    return (
+      x +
+      lastMovements.reduce((suma, movement) => {
+        return suma + movement
+      }, 0)
+    )
   })
+})
+
+const totalAmount = computed(() => {
+  return vMovements.reduce((suma, m) => {
+    return suma + m.vMovements
+  }, 0)
+})
+
+onMounted(() => {
+  const savedMovements = JSON.parse(localStorage.getItem("vMovements"))
+
+  if (Array.isArray(savedMovements)) {
+    savedMovements.forEach((m) => {
+      vMovements.push({ ...m, time: new Date(m.time) })
+    })
+  }
 })
 
 const create = (movement) => {
   vMovements = [...vMovements, movement]
+
+  save()
 }
 
 const remove = (id) => {
   const index = vMovements.findIndex((m) => m.id === id)
 
-  vMovements.splice(index, 1)
+  vMovements = (prev) => {
+    prev.splice(index, 1)
+    return [...prev]
+  }
+
+  console.log(vMovements)
+  console.log(index)
+
+  save()
+}
+
+const save = () => {
+  localStorage.setItem("vMovements", JSON.stringify(vMovements))
 }
 </script>
 
