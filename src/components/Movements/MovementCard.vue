@@ -2,6 +2,7 @@
   <div class="movement">
     <div class="content">
       <h4>{{ title }}</h4>
+
       <p>{{ description }}</p>
     </div>
 

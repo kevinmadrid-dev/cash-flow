@@ -13,7 +13,6 @@
 <script setup>
 import { defineAsyncComponent } from "vue"
 import SplashScreen from "@/components/SplashScreen.vue"
-//import HeaderScreen from "@/components/HeaderScreen.vue"
 
 const HomeScreen = defineAsyncComponent(
   () =>

@@ -33,23 +33,23 @@ const props = defineProps({
   }
 })
 
-//Función para convertir el valor a formato moneda
+//convertir el valor a formato moneda
 const currencyFormatter = new Intl.NumberFormat("es-PE", {
   style: "currency",
   currency: "PEN"
 })
 
-//Función para mostrar el valor dinero
+//mostrar el valor dinero
 const viewAmount = computed(() => {
   return props.amount !== null ? props.amount : props.totalAmount
 })
 
-//Función para mostrar el label
+//mostrar el label
 const viewLabel = computed(() => {
   return props.label !== null ? props.label : props.totalLabel
 })
 
-//Función para retornar el valor dinero en formato moneda
+//retornar el valor dinero en formato moneda
 const valueAmount = computed(() => {
   return currencyFormatter.format(viewAmount.value)
 })

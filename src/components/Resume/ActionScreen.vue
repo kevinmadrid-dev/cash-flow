@@ -6,28 +6,34 @@
       <form @submit.prevent="submit">
         <div class="field">
           <label>Título</label>
+
           <input type="text" v-model="title" />
         </div>
 
         <div class="field">
           <label>Monto</label>
+
           <input type="number" v-model="amount" />
         </div>
 
         <div class="field">
           <label>Descripción del movimiento</label>
+
           <textarea v-model="description" cols="30" rows="10"></textarea>
         </div>
 
         <div class="field">
           <label>Tipo de movimiento</label>
+
           <label class="radio-label">
             <input type="radio" v-model="movementType" value="Ingreso" />
+
             <span>Ingreso</span>
           </label>
 
           <label class="radio-label">
             <input type="radio" v-model="movementType" value="Egreso" />
+
             <span>Egreso</span>
           </label>
         </div>

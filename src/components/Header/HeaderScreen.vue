@@ -9,8 +9,6 @@
 </template>
 
 <script setup>
-//import { ref } from "vue"
-
 const reload = () => {
   location.reload()
 }
