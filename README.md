@@ -60,13 +60,13 @@ npm install
 npm run serve
 ```
 
---
+---
 
 ### Prototipo base en Figma
 
 [Cash Flow in Figma](https://www.figma.com/file/MRah7af6dalQuXIhoqLDa5/Personal-CashFlow?type=design&node-id=0%3A1&mode=design&t=dV7ClP3AUD9uoOAL-1)
 
---
+---
 
 ### Contacto
 
