@@ -1,33 +1,76 @@
-# Cash Flow
+# 💰 Cash Flow
 
-### Description
+### Descripción
 
-Cash Flow - App for expense control, summary and history of movements, expenses chart.
+**Cash Flow** es una aplicación moderna desarrollada con Vue.js para el control de ingresos y gastos personales. Permite registrar movimientos financieros, visualizar resúmenes y estadísticas interactivas, todo con una experiencia rápida, responsive y accesible.
 
-### Technologies
+---
 
-- ![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
-- ![Javascript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
-- ![VueJs](https://img.shields.io/badge/vue.js-%2335495e.svg?style=for-the-badge&logo=vuedotjs&logoColor=%234FC08D)
+## 📸 Vista previa del proyecto
 
-### Aditionals Commets
+![Vista previa de Cash Flow](./src/assets/img.png)
 
-Project completed.
+---
 
-### Getting started
+## ✨ Características Principales
 
-↓ Launch react app. [http://localhost:8080](http://localhost:8080)
+- ✅ **Dashboard Financiero** con gráficos dinámicos.
+- ✅ **Registro y edición de movimientos** con validación robusta.
+- ✅ **Diseño adaptable** para móviles y escritorio.
+- ✅ **Accesibilidad mejorada** con navegación por teclado y focus states.
+- ✅ **Persistencia local** automática con LocalStorage.
+- ✅ **Formato de moneda internacional** vía Intl API.
+- ✅ **Transiciones suaves** y animaciones visuales.
+
+---
+
+### 🛠️ Tecnologías Utilizadas
+
+- ![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
+- ![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
+- ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
+- ![Vue.js](https://img.shields.io/badge/Vue.js-35495e?style=for-the-badge&logo=vuedotjs&logoColor=4FC08D)
+- ![Nodejs](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white)
+
+---
+
+### 🚀 Instalación y Uso
+
+⭣ 1. Clona el repositorio
+
+```console
+git clone https://github.com/kevinmadrid-dev/cash-flow.git
+```
+
+⭣ 2. Ingresa a la carpeta del proyecto
+
+```console
+cd cash-flow
+```
+
+⭣ 3. Instala las dependencias
+
+```console
+npm install
+```
+
+⭣ 4. Ejecuta el servidor de desarrollo
 
 ```console
 npm run serve
 ```
 
-**IMPORTANT: Keep the terminal running for the correct execution of the app.**
+--
 
-### Figma app layout
+### Prototipo base en Figma
 
 [Cash Flow in Figma](https://www.figma.com/file/MRah7af6dalQuXIhoqLDa5/Personal-CashFlow?type=design&node-id=0%3A1&mode=design&t=dV7ClP3AUD9uoOAL-1)
 
-### Developer contact
+--
 
-[LinkedIn](https://www.linkedin.com/in/kevinmadrid-dev/)
+### Contacto
+
+- GitHub: [kevinmadrid-dev](https://github.com/kevinmadrid-dev)
+- LinkedIn: [kevinmadrid-dev](https://www.linkedin.com/in/kevinmadrid-dev/)
+
+⭐ Si te gusta este proyecto, ¡dale una estrella en GitHub!

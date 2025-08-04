@@ -7,101 +7,86 @@
     <template #resume>
       <ResumeScreen
         :totalLabel="'Ahorro total'"
-        :label="vLabel"
+        :label="summaryLabel"
         :totalAmount="totalAmount"
-        :amount="vAmount"
+        :amount="summaryAmount"
       >
         <template #graphic>
-          <GraphicScreen :amounts="amounts" />
-        </template>
-
-        <template #action>
-          <ActionScreen @create="create" />
+          <GraphicScreen :amounts="amounts" :chartDates="chartDates" />
         </template>
       </ResumeScreen>
     </template>
 
     <template #movements>
-      <MovementsScreen :movements="vMovements" @remove="remove" />
+      <MovementsScreen :movements="movements" @remove="handleRemoveMovement" />
+    </template>
+
+    <template #action>
+      <ActionScreen @create="handleCreateMovement" />
     </template>
   </LayoutScreen>
 </template>
 
 <script setup>
-import { computed, reactive, onMounted } from "vue"
+  import { computed } from 'vue'
+  import { useMovements } from '@/composables/useMovements'
 
-import LayoutScreen from "./LayoutScreen.vue"
-import HeaderScreen from "./Header/HeaderScreen.vue"
-import ResumeScreen from "./Resume/ResumeScreen"
-import GraphicScreen from "./Resume/GraphicScreen"
-import ActionScreen from "./Resume/ActionScreen.vue"
-import MovementsScreen from "./Movements/MovementsScreen"
+  import LayoutScreen from './LayoutScreen.vue'
+  import HeaderScreen from './Header/HeaderScreen.vue'
+  import ResumeScreen from './Resume/ResumeScreen.vue'
+  import GraphicScreen from './Resume/GraphicScreen.vue'
+  import ActionScreen from './Resume/ActionScreen.vue'
+  import MovementsScreen from './Movements/MovementsScreen.vue'
 
-let vLabel = null
-let vAmount = null
-let vMovements = reactive([])
+  // Composables
+  const {
+    movements,
+    totalAmount,
+    totalIncomes,
+    totalExpenses,
+    amounts,
+    chartDates,
+    createMovement,
+    removeMovement,
+  } = useMovements()
 
-const amounts = computed(() => {
-  const lastDays = vMovements
-    .filter((x) => {
-      const today = new Date()
-      const oldDate = today.setDate(today.getDate() - 30)
+  // Computed properties para el resumen
+  const summaryLabel = computed(() => {
+    const income = totalIncomes.value
+    const expense = totalExpenses.value
 
-      return x.time > oldDate
-    })
-    .map((y) => y.amount)
-
-  return lastDays.map((x, i) => {
-    const lastMovements = lastDays.slice(0, i)
-
-    return (
-      x +
-      lastMovements.reduce((suma, movement) => {
-        return suma + movement
-      }, 0)
-    )
+    if (income > expense) {
+      return 'Ganancia del mes'
+    } else if (expense > income) {
+      return 'Pérdida del mes'
+    } else {
+      return 'Sin cambios'
+    }
   })
-})
 
-const totalAmount = computed(() => {
-  return vMovements.reduce((suma, m) => {
-    return suma + m.vMovements
-  }, 0)
-})
+  const summaryAmount = computed(() => {
+    return Math.abs(totalIncomes.value - totalExpenses.value)
+  })
 
-onMounted(() => {
-  const savedMovements = JSON.parse(localStorage.getItem("vMovements"))
-
-  if (Array.isArray(savedMovements)) {
-    savedMovements.forEach((m) => {
-      vMovements.push({ ...m, time: new Date(m.time) })
-    })
-  }
-})
-
-const create = (movement) => {
-  vMovements = [...vMovements, movement]
-
-  save()
-}
-
-const remove = (id) => {
-  const index = vMovements.findIndex((m) => m.id === id)
-
-  vMovements = (prev) => {
-    prev.splice(index, 1)
-    return [...prev]
+  // Métodos
+  const handleCreateMovement = movementData => {
+    try {
+      createMovement(movementData)
+    } catch (error) {
+      console.error('Error creating movement:', error)
+    }
   }
 
-  console.log(vMovements)
-  console.log(index)
-
-  save()
-}
-
-const save = () => {
-  localStorage.setItem("vMovements", JSON.stringify(vMovements))
-}
+  const handleRemoveMovement = id => {
+    try {
+      const success = removeMovement(id)
+      if (!success) {
+        console.warn('Movement not found:', id)
+      }
+    } catch (error) {
+      console.error('Error removing movement:', error)
+    }
+  }
 </script>
 
 <style scoped></style>
