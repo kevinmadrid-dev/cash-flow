@@ -2,6 +2,7 @@
   <main class="resume-main">
     <div class="summary">
       <p class="label">{{ viewLabel }}</p>
+
       <h2 class="amount" :class="amountClass">{{ formattedAmount }}</h2>
     </div>
 
@@ -38,6 +39,14 @@
   const { formatCurrency } = useCurrency()
 
   // Computed properties
+  const signedAmount = computed(() => {
+    if (viewLabel.value?.toUpperCase().includes('PÉRDIDA')) {
+      return -Math.abs(viewAmount.value)
+    } else {
+      return viewAmount.value
+    }
+  })
+
   const viewAmount = computed(() => {
     return props.amount !== null ? props.amount : props.totalAmount
   })
@@ -46,17 +55,17 @@
     return props.label !== null ? props.label : props.totalLabel
   })
 
-  const formattedAmount = computed(() => {
-    return formatCurrency(viewAmount.value)
-  })
-
   const amountClass = computed(() => {
-    const amount = viewAmount.value
+    const amount = signedAmount.value
     return {
       positive: amount > 0,
       negative: amount < 0,
       neutral: amount === 0,
     }
+  })
+
+  const formattedAmount = computed(() => {
+    return formatCurrency(signedAmount.value)
   })
 </script>
 
